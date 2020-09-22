@@ -36,12 +36,15 @@ class App extends Component {
   }
 
   greaseFn = () => {
+    console.log(this.state.greaseFilter)
     let piggies = this.state.currentHogs
 
     let filteredPiggies = piggies.filter(pig => {
       return pig.greased === true
     })
-    this.setState({ currentHogs: filteredPiggies})
+
+    this.setState({ currentHogs: filteredPiggies}, () => {console.log('should have filtered')})
+    
   }
 
   alphabetFn = (arg) => {
@@ -52,6 +55,7 @@ class App extends Component {
   }
 
   weightFn = (arg) => {
+    console.log(this.state.weightSorting)
     let piggies = this.state.currentHogs
 
     let sortedWeightPiggies = piggies.sort((a,b) => a.weight - b.weight)
